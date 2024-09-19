@@ -16,6 +16,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   exports: [
     MatAutocompleteModule,
@@ -34,6 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     MatSnackBarModule,
     MatToolbarModule,
     MatTableModule,
+    FormsModule,
+    MatPaginatorModule,
   ]
 })
 export class MaterialModule { }
