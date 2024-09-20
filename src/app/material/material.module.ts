@@ -17,9 +17,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+
+
+
+
+
 @NgModule({
   exports: [
+
+    FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
@@ -30,14 +39,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatToolbarModule,
     MatTableModule,
-    FormsModule,
-    MatPaginatorModule,
+    MatToolbarModule,
+
   ]
 })
 export class MaterialModule { }
