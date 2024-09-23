@@ -6,6 +6,7 @@ import { ListUsuariosComponent } from './pages/list-usuarios/list-usuarios.compo
 import { MaterialModule } from '../material/material.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { DialogUsuariosComponent } from './pages/dialog-usuarios/dialog-usuarios.component';
+import { ActividadPageComponent } from './pages/actividad-page/actividad-page.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { DialogUsuariosComponent } from './pages/dialog-usuarios/dialog-usuarios
     ListUsuariosComponent,
     HomePageComponent,
     DialogUsuariosComponent,
+    ActividadPageComponent,
 
 
   ],

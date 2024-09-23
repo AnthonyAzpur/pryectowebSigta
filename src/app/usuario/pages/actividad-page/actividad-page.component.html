@@ -1,12 +1,16 @@
-<h1 mat-dialog-title>Editar Host</h1>
+<h1 mat-dialog-title>Editar Actividad</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Nombre del Usuario</mat-label>
     <input matInput [(ngModel)]="data.dnomusu" disabled>
   </mat-form-field>
+
   <mat-form-field>
-    <mat-label>Host</mat-label>
-    <input matInput [(ngModel)]="data.dhostname">
+    <mat-label>Estado de Actividad</mat-label>
+    <mat-select [(ngModel)]="data.ldesact">
+      <mat-option [value]="'1'">Activado</mat-option>
+      <mat-option [value]="'0'">Desactivado</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

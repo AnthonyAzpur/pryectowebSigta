@@ -1,10 +1,9 @@
-
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { User } from './user.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogUsuariosComponent } from '../dialog-usuarios/dialog-usuarios.component';
+import { ActividadPageComponent } from '../actividad-page/actividad-page.component';
+import { Usuario } from './user.model';
 
 @Component({
   selector: 'app-list-usuarios',
@@ -12,42 +11,66 @@ import { DialogUsuariosComponent } from '../dialog-usuarios/dialog-usuarios.comp
   styleUrls: ['./list-usuarios.component.css']
 })
 export class ListUsuariosComponent implements OnInit {
-  displayedColumns: string[] = ['dni', 'name', 'area', 'host', 'acciones'];
-  dataSource = new MatTableDataSource<User>([
-    { dni: '12345678A', name: 'John Doe', area: 'Finanzas', host: 'Host1' },
-    { dni: '23456789B', name: 'Jane Smith', area: 'Recursos Humanos', host: 'Host2' },
-    { dni: '34567890C', name: 'Sam Wilson', area: 'IT', host: 'Host3' },
-  ]);
+  usuarios: Usuario[] = [];
+  errorMessage: string = '';
+  loading: boolean = true;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  filterValue: string = '';
+  constructor(private dataService: DataService, private dialog: MatDialog) {}
 
-  constructor(public dialog: MatDialog) {}
-
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit(): void {
+    this.cargarUsuarios();
   }
 
-  applyFilter() {
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
+  cargarUsuarios() {
+    const filtro = {
+      idsigma: "752",
+      dusuari: "",
+      dhostname: "",
+      coficin: "054",
+      DAREAS: "SUBGERENCIA DE SERVICIOS SOCIALES",
+      dnomusu: "MDELGADO",
+      ldesact: "1"
+    };
+
+    this.loading = true;
+    this.dataService.listarUsuarios(filtro).subscribe(
+      data => {
+        this.usuarios = data;
+        this.loading = false;
+      },
+      error => {
+        console.error('Error al obtener usuarios', error);
+        this.errorMessage = 'No se pudieron cargar los usuarios. Intente más tarde.';
+        this.loading = false;
+      }
+    );
   }
 
-  abrirDialog(usuario: User): void {
+  editarHost(usuario: Usuario) {
     const dialogRef = this.dialog.open(DialogUsuariosComponent, {
-      width: '500px',
-      data: usuario // Asegúrate de pasar un solo usuario
+      width: '250px',
+      data: usuario
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Diálogo cerrado', result);
+      if (result) {
+        // Lógica para actualizar el usuario después de editar el host
+        console.log('Host editado:', result);
+      }
     });
   }
 
-  editUser(user: User) {
-    console.log('Editar usuario:', user);
-  }
+  editarActividad(usuario: Usuario) {
+    const dialogRef = this.dialog.open(ActividadPageComponent, {
+      width: '250px',
+      data: usuario
+    });
 
-  deleteUser(user: User) {
-    console.log('Eliminar usuario:', user);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Lógica para actualizar el estado de la actividad
+        console.log('Actividad editada:', result);
+      }
+    });
   }
 }

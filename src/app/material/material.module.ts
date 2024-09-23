@@ -15,9 +15,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
+import { DataTablesModule } from "angular-datatables";
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
@@ -27,7 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   exports: [
-
+    DataTablesModule,
     FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -44,8 +44,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatTableModule,
     MatToolbarModule,
+    HttpClientModule,
 
   ]
 })

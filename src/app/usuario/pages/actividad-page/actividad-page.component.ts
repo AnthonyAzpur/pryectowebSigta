@@ -3,13 +3,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from '../list-usuarios/user.model';
 
 @Component({
-  selector: 'app-dialog-usuarios',
-  templateUrl: './dialog-usuarios.component.html',
-  styleUrls: ['./dialog-usuarios.component.css']
+  selector: 'app-actividad-page',
+  templateUrl: './actividad-page.component.html',
+  styleUrls: ['./actividad-page.component.css']
 })
-export class DialogUsuariosComponent {
+export class ActividadPageComponent {
   constructor(
-    public dialogRef: MatDialogRef<DialogUsuariosComponent>,
+    public dialogRef: MatDialogRef<ActividadPageComponent>, // Cambia aquí
     @Inject(MAT_DIALOG_DATA) public data: Usuario
   ) {}
 

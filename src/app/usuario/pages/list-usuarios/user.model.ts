@@ -1,6 +1,9 @@
-export interface User {
-  dni: string;
-  name: string;
-  area: string;
-  host: string;    
+export interface Usuario {
+  idsigma: string;
+  dusuari: string;
+  dhostname: string;
+  coficin: string;
+  DAREAS: string;
+  dnomusu: string;
+  ldesact: string;
 }
